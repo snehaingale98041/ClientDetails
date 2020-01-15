@@ -1,16 +1,16 @@
 # ClientDetails
 Maintaining contact information of Client using Web API and MVC entity framework.
 
-Project Description:
+#Project Description:
 Design and implement a production ready application for maintaining contact information.
 
-Tasks:
+#Tasks:
 •	List contacts
 •	Add a contact
 •	Edit contact
 •	Delete/Inactivate a contact
 
-Tools Used:
+#Tools Used:
 •	Database : SQL Server 2019 
 •	Entity Framework : version 6 
 •	IDE used : Visual Studio 2019 ,MVC based Web API
