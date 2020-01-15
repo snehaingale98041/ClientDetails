@@ -1,0 +1,78 @@
+﻿@model IEnumerable<MVCClientDetails.Models.MVCClinetDetailsModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+
+<p>
+    <a href="@Url.Action("AddOrEdit","MVCClientDetails")" class="btn btn-default"><i class="fa fa-plus"></i>Create New</a>
+</p>
+
+
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.js"></script>*@
+
+<table class="table table-striped">
+    <thead class="table-heading">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                <a href="@Url.Action("AddOrEdit","MVCClientDetails", new { id=item.ClientDetailsID})" class="btn btn-default"><i class="fa fa-pencil"></i>Update</a>
+                <a onclick="Delete(@item.ClientDetailsID)" class="btn btn-default"><i class="fa fa-trash"></i>Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts{
+    <script>
+        $(function() {
+            var SuccessMessage = '@TempData["SuccessMessage"]';
+            if (SuccessMessage != '')
+                alertify.success(SuccessMessage);
+        })
+
+        function Delete(id) {
+            alertify.confirm('Web API Project', 'Are you sure to delete this record ?', function () {
+                window.location.href = '@Url.Action("Delete","MVCClientDetails")/' + id;
+            }, null);
+        }
+    </script>
+    }
